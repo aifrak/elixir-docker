@@ -20,7 +20,7 @@ read answer
 echo ""
 
 if [ "$answer" != "${answer#[Yy]}" ]; then
-  git tag v${ELIXIR_VERSION}-${ERLANG_VERSION}-erlang-buster-slim
+  git tag v${elixir_version}-${erlang_version}-erlang-buster-slim
   git push --tags
 else
   echo Operation cancelled

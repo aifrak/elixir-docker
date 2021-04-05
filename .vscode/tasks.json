@@ -1,0 +1,35 @@
+{
+  // See https://go.microsoft.com/fwlink/?LinkId=733558
+  // for the documentation about the tasks.json format
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "git-tag",
+      "type": "shell",
+      "command": "sh",
+      "args": ["git-tag.sh", "${input:elixirVersion}", "${input:erlangVersion}"],
+      "problemMatcher": [],
+      "detail": "Tag a version for release"
+    },
+    {
+      "label": "test-build",
+      "type": "shell",
+      "command": "sh",
+      "args": ["test-build.sh"],
+      "problemMatcher": [],
+      "detail": "Run tests"
+    },
+  ],
+  "inputs": [
+    {
+      "id": "elixirVersion",
+      "type": "promptString",
+      "description": "Version of Elixir? (format: x.y.z)",
+    },
+    {
+      "id": "erlangVersion",
+      "type": "promptString",
+      "description": "Version of Erlang? (format: x.y.z)",
+    },
+  ]
+}

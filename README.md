@@ -7,29 +7,30 @@ Installation of dockerized Elixir (Debian).
 [![Docker Pulls](https://img.shields.io/docker/pulls/aifrak/elixir?color=yellow)](https://hub.docker.com/r/aifrak/elixir/)
 [![GitHub](https://img.shields.io/github/license/aifrak/elixir-docker?color=blue)](https://github.com/aifrak/elixir-docker/blob/master/LICENSE)
 
-## How to use this image
+## How to use this   image
 
 Short syntax:
 
-```
+```shell
 docker run --rm -it -v [DIR]:/app aifrak/elixir
 ```
 
 Long syntax:
 
-```
+```shell
 docker run --rm -it -v [DIR]:/app aifrak/elixir
 ```
 
 This example runs the image with the current host directory inside the container.
 
-```
+```shell
 docker run --rm -it -v $(pwd):/app aifrak/elixir
 ```
 
 ### `DIR`
 
-Directory of your project on the host. Its content will copied inside the container under `/app`.
+Directory of your project on the host. Its content will copied inside the
+container under `/app`.
 
 ### `/app`
 
@@ -39,18 +40,19 @@ It is also the default working directory of the container.
 
 ### Default user
 
-The default user used by the container is `app-user`. Its user folder is also created inside the `/home`.
+The default user used by the container is `app-user`. Its user folder is also
+created inside the `/home`.
 
 ## Docker
 
-```
+```shell
 docker pull aifrak/elixir
 ```
 
 ## Quick references
 
-- __Docker hub__: https://hub.docker.com/r/aifrak/elixir
-- __Github__: https://github.com/aifrak/elixir-docker
+- **Docker hub**: <https://hub.docker.com/r/aifrak/elixir>
+- **Github**: <https://github.com/aifrak/elixir-docker>
 
 ## Inspirations
 

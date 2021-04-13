@@ -3,33 +3,79 @@
   // for the documentation about the tasks.json format
   "version": "2.0.0",
   "tasks": [
+    // -------------------------------------------------------------------------
+    // ----------------------------- Docker Hub --------------------------------
+    // -------------------------------------------------------------------------
     {
-      "label": "git-tag",
+      "label": "docker-hub-sut",
+      "type": "shell",
+      "command": "make",
+      "args": [ "docker-hub-sut"],
+      "problemMatcher": [],
+      "detail": "Run tests used to build Docker image (Docker Hub automated tests)",
+    },
+    // -------------------------------------------------------------------------
+    // --------------------------------- Git tag -------------------------------
+    // -------------------------------------------------------------------------
+    {
+      "label": "git-tag-release",
       "type": "shell",
       "command": "sh",
-      "args": ["git-tag.sh", "${input:elixirVersion}", "${input:erlangVersion}"],
+      "args": [
+        "git-tag-release.sh",
+        "${input:elixirVersion}",
+        "${input:erlangVersion}"
+      ],
       "problemMatcher": [],
-      "detail": "Tag a version for release"
+      "detail": "Tag for release",
+      "options": { "cwd": "./scripts/shell" }
+    },
+    // -------------------------------------------------------------------------
+    // ---------------------- Shell unit tests / linter ------------------------
+    // -------------------------------------------------------------------------
+    {
+      "label": "shell-test-all",
+      "type": "shell",
+      "command": "make",
+      "args": ["shell-test-all"],
+      "problemMatcher": [],
+      "detail": "Run all unit tests and linter for shell scripts"
     },
     {
-      "label": "test-build",
+      "label": "shell-linter",
       "type": "shell",
-      "command": "sh",
-      "args": ["test-build.sh"],
+      "command": "make",
+      "args": ["shell-linter"],
       "problemMatcher": [],
-      "detail": "Run tests"
+      "detail": "Run shell linter"
     },
+    {
+      "label": "shell-tests",
+      "type": "shell",
+      "command": "make",
+      "args": ["shell-tests"],
+      "problemMatcher": [],
+      "detail": "Run shell unit tests"
+    },
+    {
+      "label": "shell-tests-format",
+      "type": "shell",
+      "command": "make",
+      "args": ["shell-tests-format"],
+      "problemMatcher": [],
+      "detail": "Run check format on ShellSpec files"
+    }
   ],
   "inputs": [
     {
       "id": "elixirVersion",
       "type": "promptString",
-      "description": "Version of Elixir? (format: x.y.z)",
+      "description": "Version of Elixir? (format: x.y.z)"
     },
     {
       "id": "erlangVersion",
       "type": "promptString",
-      "description": "Version of Erlang? (format: x.y.z)",
-    },
+      "description": "Version of Erlang? (format: x.y.z)"
+    }
   ]
 }

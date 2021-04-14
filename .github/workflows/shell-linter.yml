@@ -2,12 +2,12 @@ name: Shell linter
 
 on:
   pull_request:
-    paths-ignore:
+    paths:
       - '**.sh'
       - '!.vscode/**'
       - '!LICENSE'
   push:
-    paths-ignore:
+    paths:
       - '**.sh'
       - '!.vscode/**'
       - '!LICENSE'

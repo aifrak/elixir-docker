@@ -1,6 +1,9 @@
 name: Markdown linter
 
 on:
+  pull_request:
+    paths:
+      - '**.md'
   push:
     paths:
       - '**.md'

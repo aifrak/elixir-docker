@@ -7,7 +7,7 @@ Installation of dockerized Elixir (Debian).
 [![Docker Pulls](https://img.shields.io/docker/pulls/aifrak/elixir?color=yellow)](https://hub.docker.com/r/aifrak/elixir/)
 [![GitHub](https://img.shields.io/github/license/aifrak/elixir-docker?color=blue)](https://github.com/aifrak/elixir-docker/blob/master/LICENSE)
 
-## How to use this   image
+## How to use this image
 
 Short syntax:
 

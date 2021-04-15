@@ -7,27 +7,36 @@ on:
   pull_request:
 
 jobs:
-  lint:
+  skip-duplicate-actions:
 
-    name: Lint Markdown files
+    name: Skip duplicate actions
     runs-on: ubuntu-20.04
+    outputs:
+      unique-workflow: ${{ !steps.skip_check.outputs.should_skip }}
 
     steps:
 
-      - id: skip_check
-        name: Cancel an already running workflow
+      - id: check-unique-workflow
+        name: Check if workflow is not already running
         uses: fkirc/skip-duplicate-actions@v3.4.0
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           concurrent_skipping: 'same_content'
           do_not_skip: '["pull_request", "workflow_dispatch", "schedule"]'
 
+  lint:
+
+    name: Lint Markdown files
+    needs: skip-duplicate-actions
+    if: ${{ needs.skip-duplicate-actions.outputs.unique-workflow }}
+    runs-on: ubuntu-20.04
+
+    steps:
+
       - name: Checkout code
-        if: ${{ steps.skip_check.outputs.should_skip != 'true' }}
         uses: actions/checkout@v2
 
       - name: Markdown lint (markdownlint-cli)
-        if: ${{ success() }}
         uses: nosborn/github-action-markdown-cli@v1.1.1
         with:
           files: .

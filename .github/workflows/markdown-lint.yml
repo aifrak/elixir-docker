@@ -23,10 +23,11 @@ jobs:
           do_not_skip: '["pull_request", "workflow_dispatch", "schedule"]'
 
       - name: Checkout code
-        if: ${{ steps.skip_check.outputs.should_skip != 'true' }}
+        if: ${{ success() }}
         uses: actions/checkout@v2
 
       - name: Markdown lint (markdownlint-cli)
+        if: ${{ success() }}
         uses: nosborn/github-action-markdown-cli@v1.1.1
         with:
           files: .

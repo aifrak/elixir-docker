@@ -12,7 +12,7 @@ jobs:
     name: Skip duplicate actions
     runs-on: ubuntu-20.04
     outputs:
-      should_skip: ${{ !steps.skip_check.outputs.should_skip }}
+      should_skip: ${{ steps.skip_check.outputs.should_skip != 'true' }}
 
     steps:
 
@@ -28,7 +28,7 @@ jobs:
 
     name: Lint Markdown files
     needs: skip-duplicate-actions
-    if: ${{ needs.skip-duplicate-actions.outputs.should_skip == 'true' }}
+    if: ${{ needs.skip-duplicate-actions.outputs.should_skip }}
     runs-on: ubuntu-20.04
 
     steps:

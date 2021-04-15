@@ -23,7 +23,7 @@ jobs:
           do_not_skip: '["pull_request", "workflow_dispatch", "schedule"]'
 
       - name: Checkout code
-        if: ${{ success() }}
+        if: ${{ steps.skip_check.outputs.should_skip != 'true' }}
         uses: actions/checkout@v2
 
       - name: Markdown lint (markdownlint-cli)

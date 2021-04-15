@@ -12,6 +12,6 @@ WORKDIR $DOCKER_TEST_DIR
 
 COPY --from=test-testinfra /usr/local/lib /usr/local/lib
 COPY --from=test-testinfra /usr/local/bin /usr/local/bin
-COPY --chown=$APP_USER:$APP_USER_GROUP ./test .
+COPY --chown=$APP_USER:$APP_USER_GROUP ./tests .
 
 ENTRYPOINT ["pytest"]

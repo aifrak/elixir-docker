@@ -12,7 +12,7 @@ jobs:
     name: Skip duplicate actions
     runs-on: ubuntu-20.04
     outputs:
-      unique-workflow: ${{ !steps.skip_check.outputs.should_skip }}
+      unique-workflow: ${{ !steps.check-unique-workflow.outputs.should_skip }}
 
     steps:
 

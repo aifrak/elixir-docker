@@ -7,33 +7,23 @@ on:
   pull_request:
 
 jobs:
-  pre_job:
+  lint:
 
-    # continue-on-error: true # Uncomment once integration is finished
-    runs-on: ubuntu-latest
-    outputs:
-      should_skip: ${{ steps.skip_check.outputs.should_skip }}
+    name: Lint Markdown files
+    runs-on: ubuntu-20.04
 
     steps:
 
       - id: skip_check
-        name: Cancel an already running workflow.
+        name: Cancel an already running workflow
         uses: fkirc/skip-duplicate-actions@v3.4.0
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           concurrent_skipping: 'same_content'
           do_not_skip: '["pull_request", "workflow_dispatch", "schedule"]'
 
-  lint:
-
-    name: Lint Markdown files
-    needs: pre_job
-    if: ${{ needs.pre_job.outputs.should_skip != 'true' }}
-    runs-on: ubuntu-20.04
-
-    steps:
-
       - name: Checkout code
+        if: ${{ steps.skip_check.outputs.should_skip != 'true' }}
         uses: actions/checkout@v2
 
       - name: Markdown lint (markdownlint-cli)

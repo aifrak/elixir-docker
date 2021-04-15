@@ -28,7 +28,7 @@ jobs:
 
     name: Lint Markdown files
     needs: skip-duplicate-actions
-    if: ${{ needs.skip-duplicate-actions.outputs.unique-workflow }}
+    if: ${{ needs.skip-duplicate-actions.outputs.unique-workflow == 'true' }}
     runs-on: ubuntu-20.04
 
     steps:

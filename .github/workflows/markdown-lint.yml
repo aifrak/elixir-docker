@@ -12,11 +12,11 @@ jobs:
     name: Skip duplicate actions
     runs-on: ubuntu-20.04
     outputs:
-      should_skip: ${{ steps.skip_check.outputs.should_skip != 'true' }}
+      should-skip: ${{ steps.skip-check.outputs.should_skip }}
 
     steps:
 
-      - id: skip_check
+      - id: skip-check
         name: Check if workflow is not already running
         uses: fkirc/skip-duplicate-actions@v3.4.0
         with:
@@ -28,7 +28,7 @@ jobs:
 
     name: Lint Markdown files
     needs: skip-duplicate-actions
-    if: ${{ needs.skip-duplicate-actions.outputs.should_skip }}
+    if: ${{ needs.skip-duplicate-actions.outputs.should-skip != 'true' }}
     runs-on: ubuntu-20.04
 
     steps:

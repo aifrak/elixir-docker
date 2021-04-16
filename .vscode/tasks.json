@@ -4,22 +4,6 @@
   "version": "2.0.0",
   "tasks": [
     // -----------------------------------------------
-    // ------------------ Git tag --------------------
-    // -----------------------------------------------
-    {
-      "label": "git-tag-release",
-      "type": "shell",
-      "command": "sh",
-      "args": [
-        "git-tag-release.sh",
-        "${input:elixirVersion}",
-        "${input:erlangVersion}"
-      ],
-      "problemMatcher": [],
-      "detail": "Tag for release",
-      "options": { "cwd": "./scripts/shell" }
-    },
-    // -----------------------------------------------
     // ---------------- Docker Hub -------------------
     // -----------------------------------------------
     {
@@ -29,53 +13,6 @@
       "args": ["docker-hub-sut"],
       "problemMatcher": [],
       "detail": "Run tests used to build Docker image (Docker Hub automated tests)"
-    },
-    // -----------------------------------------------
-    // ---------- Shell unit tests / lint ------------
-    // -----------------------------------------------
-    {
-      "label": "shell-test-all",
-      "type": "shell",
-      "command": "make",
-      "args": ["shell-test-all"],
-      "problemMatcher": [],
-      "detail": "Run all unit tests and lint for Shell scripts"
-    },
-    {
-      "label": "shell-lint",
-      "type": "shell",
-      "command": "make",
-      "args": ["shell-lint"],
-      "problemMatcher": [],
-      "detail": "Lint Shell scripts"
-    },
-    {
-      "label": "shell-test",
-      "type": "shell",
-      "command": "make",
-      "args": ["shell-test"],
-      "problemMatcher": [],
-      "detail": "Run Shell unit tests"
-    },
-    {
-      "label": "shell-lint-tests",
-      "type": "shell",
-      "command": "make",
-      "args": ["shell-lint-tests"],
-      "problemMatcher": [],
-      "detail": "Lint Shell unit tests (ShellSpec)"
-    }
-  ],
-  "inputs": [
-    {
-      "id": "elixirVersion",
-      "type": "promptString",
-      "description": "Version of Elixir? (format: x.y.z)"
-    },
-    {
-      "id": "erlangVersion",
-      "type": "promptString",
-      "description": "Version of Erlang? (format: x.y.z)"
     }
   ]
 }

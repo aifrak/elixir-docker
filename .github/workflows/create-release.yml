@@ -1,25 +1,44 @@
-name: Create Release from pushed tag
+name: Create release
 
 on:
-  push:
-    # Sequence of patterns matched against refs/tags
-    tags:
-      - 'v*' # Push events to matching v*, i.e. v1.0, v20.15.10
+  workflow_dispatch:
+    inputs:
+      elixir-version:
+        description: "Elixir version (format: x.y.z)"
+        required: true
+      erlang-version:
+        description: "Erlang version (format: x.y.z)"
+        required: true
 
 jobs:
-  build:
-    name: Create Release
+  create-release:
+    name: Create release
     runs-on: ubuntu-20.04
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-      - name: Create Release
-        id: create_release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
+
+      - name: Built tag
+        id: build-tag
+        run: |
+          ELIXIR_VERSION="${{ github.event.inputs.elixir-version }}"
+          ERLANG_VERSION="${{ github.event.inputs.erlang-version }}"
+          BUILT_TAG="v${ELIXIR_VERSION}-erlang-${ERLANG_VERSION}-debian"
+
+          echo "::set-output name=tag::${BUILT_TAG}"
+
+      - name: Create tag
+        uses: tvdias/github-tagger@v0.0.2
         with:
-          tag_name: ${{ github.ref }}
-          release_name: ${{ github.ref }}
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          tag: ${{ steps.build-tag.outputs.tag }}
+
+      - name: Create release
+        uses: softprops/action-gh-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ steps.build-tag.outputs.tag }}
           draft: true
           prerelease: false

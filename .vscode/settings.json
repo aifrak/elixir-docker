@@ -1,20 +1,14 @@
 {
   // Spelling:
-  "cSpell.userWords": [
-    "Shellcheck",
-    "Shellspec",
-  ],
   "cSpell.words": [
     "bitwalker",
     "dockerized",
     "fkirc",
     "markdownlint",
-    "nosborn"
+    "nosborn",
+    "softprops",
+    "tvdias"
   ],
-
-  // Shellcheck:
-  "shellcheck.customArgs": ["--shell=sh", "--format=tty", "-x"],
-  "shellcheck.useWorkspaceRootAsCwd": true,
 
   // Task explorer:
   "taskExplorer.exclude": [

@@ -13,10 +13,6 @@
     // Github Actions:
     "cschleiden.vscode-github-actions",
 
-    // Shell:
-    "foxundermoon.shell-format",
-    "timonwong.shellcheck",
-
     // Markdown:
     "davidanson.vscode-markdownlint",
     "shd101wyy.markdown-preview-enhanced",

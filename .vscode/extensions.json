@@ -13,6 +13,9 @@
     // Github Actions:
     "cschleiden.vscode-github-actions",
 
+    // YAML
+    "redhat.vscode-yaml",
+
     // Markdown:
     "davidanson.vscode-markdownlint",
     "shd101wyy.markdown-preview-enhanced",

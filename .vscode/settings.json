@@ -3,9 +3,13 @@
   "cSpell.words": [
     "bitwalker",
     "dockerized",
+    "entrypoint",
     "fkirc",
+    "hadolint",
+    "libpython",
     "markdownlint",
     "nosborn",
+    "pytest",
     "softprops",
     "tvdias"
   ],

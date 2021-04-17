@@ -7,6 +7,9 @@
     // Docker:
     "ms-azuretools.vscode-docker",
 
+    // Dockerfile:
+    "exiasr.hadolint",
+
     // Tasks / Makefile targets
     "spmeesseman.vscode-taskexplorer",
 

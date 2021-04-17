@@ -35,4 +35,6 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Lint Dockerfile
-        run: hadolint ./**/*Dockerfile*
+        # Pattern ./**/*Dockerfile* is not working on Github Actions.
+        # If Dockerfile are added in other places, we need to their paths here.
+        run: hadolint ./*Dockerfile*

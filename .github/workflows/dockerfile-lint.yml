@@ -3,7 +3,7 @@ name: Dockerfile lint
 on:
   push:
     paths:
-      - "**/Dockerfile*"
+      - "**/*Dockerfile*"
   pull_request:
 
 jobs:
@@ -27,6 +27,8 @@ jobs:
     needs: skip-duplicate-actions
     if: ${{ needs.skip-duplicate-actions.outputs.should-skip != 'true' }}
     runs-on: ubuntu-20.04
+    container:
+      image: hadolint/hadolint:v2.1.0-alpine
 
     steps:
       - name: Checkout code
@@ -34,5 +36,4 @@ jobs:
 
       - name: Lint Dockerfile
         uses: hadolint/hadolint-action@v1.4.0
-        with:
-          dockerfile: "**/Dockerfile*"
+        run: hadolint ./**/*Dockerfile*

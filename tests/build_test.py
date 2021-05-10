@@ -1,4 +1,5 @@
 import os
+
 import pytest
 import testinfra
 
@@ -8,7 +9,7 @@ ERLANG_VERSION = '23.2.7'
 
 HOME_PATH = os.environ['HOME']
 USER_NAME = 'app-user'
-USER_GROUP = 'www-data'
+USER_GROUP = 'app-user'
 
 
 @pytest.mark.parametrize('name,version', [
